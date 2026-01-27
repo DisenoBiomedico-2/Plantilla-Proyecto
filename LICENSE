@@ -1,0 +1,16 @@
+ESTE ARCHIVO DEBE SER DEFINIDO EN LA FASE DE NEGOCIACIÓN CON SU CLIENTE/USUARIO.
+
+OPCIÓN A: PROYECTO CON EMPRESA (Propiedad Privada)
+Si la empresa exige confidencialidad o propiedad sobre el diseño:
+1. Este repositorio debe mantenerse PRIVADO.
+2. Reemplace este texto con el acuerdo de confidencialidad o una nota que diga: "Todos los derechos reservados. Propiedad exclusiva de [Nombre de la Empresa]".
+
+OPCIÓN B: PROYECTO SOCIAL / ABIERTO (Open Source)
+Si el proyecto busca beneficiar a la comunidad o es para un usuario individual sin restricciones comerciales:
+1. Se recomienda usar una licencia abierta para facilitar que otros repliquen su solución.
+2. Reemplace este texto copiando el contenido de una licencia estándar:
+   - Para Software: Licencia MIT (Permisiva) o GNU GPLv3.
+   - Para Hardware: CERN OHL (Open Hardware License).
+
+NOTA PARA EL ESTUDIANTE:
+Discuta esto con su cliente en la Semana 1. Definir quién es el dueño de la información es parte fundamental de la ingeniería.
