@@ -40,22 +40,33 @@ El profesor **NO revisará** carpetas al azar buscando archivos. El profesor rev
 
 ## 📂 Estructura del Repositorio (Design History File)
 
-Este repositorio sigue la lógica de un **DHF (Design History File)** de la industria médica.
+Este repositorio organiza el proyecto separando la evidencia documental de los archivos técnicos de ingeniería.
 
-*   **/01_Gestion_del_Proyecto**: Aspectos administrativos (Cronograma, Presupuesto, Acuerdos legales).
-*   **/02_DHF_Proceso_Diseno**: **DOCUMENTACIÓN OBLIGATORIA DEL PROCESO.**
-    *   *Fase_1_Investigacion*: Formulación del problema, árbol de problemas, investigación de usuarios, normas aplicables.
-    *   *Fase_2_Conceptual*: Lluvia de ideas, matrices de selección (Pugh/AHP), bocetos iniciales.
-    *   *Fase_3_Validacion*: Protocolos de pruebas, consentimientos informados, análisis estadístico de resultados de usabilidad.
-*   **/03_Ingenieria_Tecnica**: Archivos editables (CAD, Código, Circuitos).
+*   **/01_Gestion_del_Proyecto**: Cronograma, Presupuesto, Licencias, Cartas de intención, Acuerdos legales,...
+
+*   **/02_DHF_Proceso_Diseno**: **DOCUMENTACIÓN (INFORMES Y EVIDENCIA)**
+    *   *Fase_1_Investigacion*: Definición de requerimientos, normas y estado del arte, etc
+    *   *Fase_2_Conceptual*: Matrices de selección, bocetos y definición de arquitectura, etc
+    *   *Fase_3_Diseno_Detalle*: **Justificación ingenieril.** Aquí van los informes de cálculos, resultados de simulaciones, BOM final y especificaciones técnicas.
+    *   *Fase_4_Validacion*: Protocolos de pruebas, resultados de validación con usuarios, análisis estadístico, etc
+
+*   **/03_Ingenieria_Tecnica**: **ARCHIVOS FUENTE EDITABLES (HERRAMIENTAS)**
+    *   *Calculos_Simulaciones*: Archivos de Excel, Scripts (MATLAB/Python), Simulaciones (Ansys/Proteus), simulaciones de SolidWorks, etc.
+    *   *Mecanica_CAD*: Archivos nativos de modelado 3D y planos de fabricación.
+    *   *Electronica*: Esquemáticos, diseño de PCB (Gerbers) y listas de materiales.
+    *   *Software_Firmware*: Código fuente documentado.
+
 *   **/04_Multimedia_Prototipo**: **MATERIAL DE DIVULGACIÓN.**
     *   Fotos de alta calidad del prototipo final.
     *   Video de funcionamiento (Demo) para la presentación final.
     *   Renders comerciales o material para el Póster/Pitch.
+
 *   **/05_Reporte_Final_ABET**: 
     *   Aquí se entregará el documento final compilado ("Capstone Project") siguiendo la plantilla institucional.
     *   Este documento debe alimentarse de la información generada en la carpeta `02_DHF`.
+
 </details>
+
 ---
 
 ## 📝 Resumen del Problema
