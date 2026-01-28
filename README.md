@@ -1,5 +1,4 @@
-# Plantilla-Proyecto
-Plantilla para los proyectos del Curso Diseño Biomédico 2 de la Universidad Autónoma de Occidente. Prof. Oscar Campo, PhD
+*Plantilla de tu Proyecto: Edita esta plantilla usando el ícono del lápiz y coloca la información de tu grupo.*
 
 
 # Proyecto de Diseño Biomédico 2
