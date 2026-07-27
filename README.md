@@ -46,7 +46,7 @@ El profesor **NO revisará** carpetas al azar buscando archivos. El profesor rev
 ### 3. Formato de la documentación: Markdown, no binarios
 Como la evaluación es individual, la documentación de equipo (informes, actas, matrices de
 selección, bitácoras, justificación ingenieril) se escribe en archivos de texto **Markdown
-(`.md`)** dentro del repositorio — **no** en Word, Google Docs ni OneDrive compartido.
+(`.md`)** dentro del repositorio, **no** en Word, Google Docs ni OneDrive compartido.
 *   **¿Por qué?** Un `.md` editado y comiteado por cada persona deja un historial claro de
     quién escribió qué y cuándo. Un documento compartido en Drive/OneDrive NO tiene esa
     trazabilidad: para la evaluación individual, ese trabajo "no existe" aunque el equipo sí
@@ -67,11 +67,11 @@ construirlo hablando entre todos, pueden lograr lo mismo con `.md` así:
     discuten y construyen el contenido juntos en tiempo real, pero cada quien escribe y
     comitea su propia parte desde su propio computador.
 *   Así la conversación es simultánea (como en Drive), pero cada commit sigue siendo 100%
-    de una sola persona — sin eso, la evaluación individual no se puede sostener.
+    de una sola persona, sin eso, la evaluación individual no se puede sostener.
 *   Existen herramientas de edición simultánea "estilo Google Docs" para código (ej. VS Code
     Live Share), pero las descartamos para este curso: por defecto todo el texto tecleado en
     la sesión termina comiteado a nombre de quien controla la sesión, así que no resuelven el
-    problema de trazabilidad individual sin disciplina extra — más complejidad sin beneficio
+    problema de trazabilidad individual sin disciplina extra, es más complejidad sin beneficio
     real sobre la opción de "sección con dueño".
 
 ---
