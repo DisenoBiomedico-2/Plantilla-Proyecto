@@ -59,6 +59,21 @@ selección, bitácoras, justificación ingenieril) se escribe en archivos de tex
 *   Para insertar una imagen dentro de un `.md` (ej. una foto de avance o un boceto), arrástrala
     directamente al editor de texto de GitHub — se sube sola y queda enlazada en el archivo.
 
+### 4. Trabajar juntos en videollamada (sin perder la autoría)
+Si están acostumbrados a abrir un documento de Google Docs/OneDrive en videollamada y
+construirlo hablando entre todos, pueden lograr lo mismo con `.md` así:
+*   **Dividan el documento por secciones o por archivos, cada uno con un dueño.** Ej.:
+    `estado_del_arte.md` lo escribe una persona, `requerimientos.md` otra. En la llamada
+    discuten y construyen el contenido juntos en tiempo real, pero cada quien escribe y
+    comitea su propia parte desde su propio computador.
+*   Así la conversación es simultánea (como en Drive), pero cada commit sigue siendo 100%
+    de una sola persona — sin eso, la evaluación individual no se puede sostener.
+*   Existen herramientas de edición simultánea "estilo Google Docs" para código (ej. VS Code
+    Live Share), pero las descartamos para este curso: por defecto todo el texto tecleado en
+    la sesión termina comiteado a nombre de quien controla la sesión, así que no resuelven el
+    problema de trazabilidad individual sin disciplina extra — más complejidad sin beneficio
+    real sobre la opción de "sección con dueño".
+
 ---
 
 ## 📂 Estructura del Repositorio (Design History File)
