@@ -19,6 +19,14 @@
    
 Para la evaluación de este curso, utilizamos la metodología **"Si no está en el Issue, no existe"**.
 
+Este curso evalúa desempeño **individual** dentro del equipo. Este repositorio se creó a
+partir del usuario de GitHub que cada integrante reportó a su profesor el día de la
+conformación de grupos — ese usuario es tu identidad de trabajo aquí, y todo lo que subas
+queda registrado con él. Haz tus propios commits, con tu propia cuenta: no subas evidencia
+de un compañero "de favor" con tu usuario, porque le quitas la trazabilidad de su trabajo.
+Si cambiaste de usuario de GitHub después de esa clase, avísale a tu profesor para que
+ajuste tu invitación.
+
 ### 1. Configuración Inicial (Semana 1)
 1.  Vayan a la pestaña **Projects** de este repositorio.
 2.  Creen un **New Project** y seleccionen la vista **Table**.
@@ -34,6 +42,22 @@ El profesor **NO revisará** carpetas al azar buscando archivos. El profesor rev
 *   Para cerrar un Issue válidamente, deben vincular la evidencia:
     *   **Si es código/diseño:** En el commit message usen `fixes #numero_issue`.
     *   **Si es documento/foto:** Arrastren el archivo dentro del comentario del Issue y ciérrenlo.
+
+### 3. Formato de la documentación: Markdown, no binarios
+Como la evaluación es individual, la documentación de equipo (informes, actas, matrices de
+selección, bitácoras, justificación ingenieril) se escribe en archivos de texto **Markdown
+(`.md`)** dentro del repositorio — **no** en Word, Google Docs ni OneDrive compartido.
+*   **¿Por qué?** Un `.md` editado y comiteado por cada persona deja un historial claro de
+    quién escribió qué y cuándo. Un documento compartido en Drive/OneDrive NO tiene esa
+    trazabilidad: para la evaluación individual, ese trabajo "no existe" aunque el equipo sí
+    lo haya hecho.
+*   Pueden usar Google Docs para lluvia de ideas o borradores rápidos, pero el entregable
+    final que se evalúa debe quedar como `.md` en el repositorio.
+*   Esta restricción aplica solo a la **redacción colaborativa de documentos**. Los archivos
+    binarios (CAD, esquemáticos, PCB, simulaciones, fotos, video) sí se suben tal cual, en las
+    carpetas de `03_Ingenieria_Tecnica` y `04_Multimedia_Prototipo` descritas abajo.
+*   Para insertar una imagen dentro de un `.md` (ej. una foto de avance o un boceto), arrástrala
+    directamente al editor de texto de GitHub — se sube sola y queda enlazada en el archivo.
 
 ---
 
