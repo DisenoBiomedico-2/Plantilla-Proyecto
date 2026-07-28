@@ -90,8 +90,31 @@ construirlo hablando entre todos, pueden lograr lo mismo con `.md` así:
 Si no estás familiarizado con Markdown (la notación `[nombre](ruta)`, encabezados, listas) ni
 con las opciones de enlace que ofrece GitHub (ej. el ícono de eslabón 🔗 que aparece al pasar
 el mouse sobre un encabezado en un `.md`, o "Copy permalink" en un archivo de código):
-*   **[Basic writing and formatting syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)** — la referencia oficial de GitHub sobre Markdown, incluyendo la sección "Relative links" (justo lo que necesitas para enlazar archivos del repositorio).
-*   **[Communicate using Markdown](https://github.com/skills/communicate-using-markdown)** — curso interactivo gratuito de GitHub Skills (menos de 1 hora): practicas Markdown directamente en un repositorio de prueba, con retroalimentación paso a paso.
+*   **[Basic writing and formatting syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)** : la referencia oficial de GitHub sobre Markdown, incluyendo la sección "Relative links" (justo lo que necesitas para enlazar archivos del repositorio).
+*   **[Communicate using Markdown](https://github.com/skills/communicate-using-markdown)** : curso interactivo gratuito de GitHub Skills (menos de 1 hora): practicas Markdown directamente en un repositorio de prueba, con retroalimentación paso a paso.
+
+### 6. Recursos Recomendados para Dominar GitHub (Sin sufrir) 
+
+GitHub puede parecer intimidante al principio. No se preocupen, aquí tienen herramientas divertidas y sencillas para aprender en tiempo récord: 
+
+|**La Herramienta Salvavidas (Descárguenla ya\! Recomendadísimo):**|
+|:---:|
+|**[GitHub Desktop:](https://desktop.github.com/)** Si la consola de comandos les da miedo, **usen esto**. Es la aplicación visual oficial. Permite subir cambios, ver el historial y sincronizar archivos arrastrando y soltando, sin escribir comandos oscuros. **Altamente recomendada para manejar los archivos CAD y Documentos.**|
+
+
+**1\. Para aprender jugando (Literalmente):** 
+
+● **[Oh My Git\!:](https://ohmygit.org/)** Un juego open-source increíble. Convierte los comandos de Git en cartas de juego. Es visual, divertido y perfecto para entender la lógica sin escribir una sola línea de código al principio. 
+
+● **[Learn Git Branching:](https://learngitbranching.js.org/?locale=es_ES)** Es el estándar de oro para aprender visualmente. Ves gráficamente cómo se crean las ramas y los nodos cada vez que haces algo. Tiene niveles y es muy interactivo. 
+
+**2\. El Tutorial "A prueba de balas" (En 5 minutos):** 
+
+● **[Git \- La guía sencilla:](https://rogerdudler.github.io/git-guide/index.es.html)** Como su nombre lo indica, es una sola página, muy visual y sin palabras complicadas. "Git para seres humanos". 
+
+**3\. Aprender dentro del mismo GitHub (Con un Robot):** 
+
+● **[GitHub Skills: Introduction:](https://github.com/skills/introduction-to-github)** Este es un curso oficial de GitHub. Al iniciarlo, un "bot" crea un repositorio real para ti y te va guiando paso a paso (te pide que hagas un cambio, que abras un Issue, etc.) y te corrige automáticamente. ¡Es aprender haciendo\! 
 
 ---
 
@@ -123,6 +146,9 @@ Este repositorio organiza el proyecto separando la evidencia documental de los a
     *   Este documento debe alimentarse de la información generada en la carpeta `02_DHF`.
 
 </details>
+
+
+
 
 ---
 
