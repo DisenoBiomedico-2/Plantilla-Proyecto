@@ -28,13 +28,23 @@ Si cambiaste de usuario de GitHub después de esa clase, avísale a tu profesor 
 ajuste tu invitación.
 
 ### 1. Configuración Inicial (Semana 1)
-1.  Vayan a la pestaña **Projects** de este repositorio.
-2.  Creen un **New Project** y seleccionen la vista **Table**.
-3.  Vayan a la pestaña **Issues** -> **Milestones** y creen 3 hitos:
-    *   `Semana 5 - Diseño Conceptual`
-    *   `Semana 11 - Pruebas y Validación`
-    *   `Semana 17 - Entrega Final`
-4.  Carguen todas sus tareas en el Project Board, asignen un **Responsable** y una **Fecha**.
+Este repositorio ya viene con los **4 milestones** del semestre (`Semana 2 - Definición del
+Reto`, `Semana 5 - Diseño Conceptual`, `Semana 11 - Pruebas y Validación`, `Semana 17 -
+Entrega Final`) y con los **Issues iniciales** (`0.0`, `0.1`, `01`-`32`) ya creados. No tienen
+que crear nada de esto — solo organizarlo en un tablero:
+
+1.  Vayan a la pestaña **Projects** de este repositorio y creen un **New Project** con la
+    vista **Table**.
+2.  Al crearlo, GitHub les ofrece **importar los Issues del repositorio directamente a la
+    tabla** — acéptenlo, así no hay que agregarlos uno por uno.
+3.  Agreguen la columna **Milestone** (no aparece por defecto): botón **+** al final de las
+    columnas de la tabla.
+4.  Dejen visibles solo estas columnas y oculten el resto: **Title**, **Assignees**,
+    **Status**, **Milestone**.
+5.  Guarden esta vista con el botón **View → Save view**, para que no se pierda si alguien
+    la cierra o recarga la página.
+6.  Para cada tarea, asignen un **Responsable** (columna Assignees) — el `0.1` de cada
+    integrante ya viene autoasignado.
 
 ### 2. Cómo entregar tareas
 El profesor **NO revisará** carpetas al azar buscando archivos. El profesor revisará el **Project Board**.
