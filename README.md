@@ -47,7 +47,13 @@ El profesor **NO revisará** carpetas al azar buscando archivos. El profesor rev
 *   Cada tarea completada debe tener un **Issue cerrado**.
 *   Para cerrar un Issue válidamente, deben vincular la evidencia:
     *   **Si es código/diseño:** En el commit message usen `fixes #numero_issue`.
-    *   **Si es documento/foto:** Arrastren el archivo dentro del comentario del Issue y ciérrenlo.
+    *   **Si es documento/foto:** Súbanlo primero a la carpeta correspondiente del repositorio
+        (commit + push), y luego enlácenlo en un comentario del Issue con notación Markdown
+        `[nombre del archivo](ruta/al/archivo)`, y ciérrenlo. No lo arrastren directo al
+        comentario del Issue: eso lo sube dos veces (una al Issue, otra al repo) y el profesor
+        termina revisando el repositorio, no el adjunto del Issue.
+        *(¿No conoces esta notación de Markdown ni cómo copiar la ruta/el link de un archivo
+        en GitHub? Ver la sección de recursos al final de este documento.)*
 
 ### 3. Formato de la documentación: Markdown, no binarios
 Como la evaluación es individual, la documentación de equipo (informes, actas, matrices de
@@ -79,6 +85,13 @@ construirlo hablando entre todos, pueden lograr lo mismo con `.md` así:
     la sesión termina comiteado a nombre de quien controla la sesión, así que no resuelven el
     problema de trazabilidad individual sin disciplina extra, es más complejidad sin beneficio
     real sobre la opción de "sección con dueño".
+
+### 5. Recursos: Markdown y enlaces en GitHub
+Si no estás familiarizado con Markdown (la notación `[nombre](ruta)`, encabezados, listas) ni
+con las opciones de enlace que ofrece GitHub (ej. el ícono de eslabón 🔗 que aparece al pasar
+el mouse sobre un encabezado en un `.md`, o "Copy permalink" en un archivo de código):
+*   **[Basic writing and formatting syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)** — la referencia oficial de GitHub sobre Markdown, incluyendo la sección "Relative links" (justo lo que necesitas para enlazar archivos del repositorio).
+*   **[Communicate using Markdown](https://github.com/skills/communicate-using-markdown)** — curso interactivo gratuito de GitHub Skills (menos de 1 hora): practicas Markdown directamente en un repositorio de prueba, con retroalimentación paso a paso.
 
 ---
 
