@@ -21,29 +21,25 @@ Para la evaluación de este curso, utilizamos la metodología **"Si no está en 
 
 Este curso evalúa desempeño **individual** dentro del equipo. Este repositorio se creó a
 partir del usuario de GitHub que cada integrante reportó a su profesor el día de la
-conformación de grupos — ese usuario es tu identidad de trabajo aquí, y todo lo que subas
+conformación de grupos , ese usuario es tu identidad de trabajo aquí, y todo lo que subas
 queda registrado con él. Haz tus propios commits, con tu propia cuenta: no subas evidencia
 de un compañero "de favor" con tu usuario, porque le quitas la trazabilidad de su trabajo.
 Si cambiaste de usuario de GitHub después de esa clase, avísale a tu profesor para que
 ajuste tu invitación.
 
 ### 1. Configuración Inicial (Semana 1)
-Este repositorio ya viene con los **4 milestones** del semestre (`Semana 2 - Definición del
-Reto`, `Semana 5 - Diseño Conceptual`, `Semana 11 - Pruebas y Validación`, `Semana 17 -
-Entrega Final`) y con los **Issues iniciales** (`0.0`, `0.1`, `01`-`32`) ya creados. No tienen
-que crear nada de esto — solo organizarlo en un tablero:
 
 1.  Vayan a la pestaña **Projects** de este repositorio y creen un **New Project** con la
     vista **Table**.
 2.  Al crearlo, GitHub les ofrece **importar los Issues del repositorio directamente a la
-    tabla** — acéptenlo, así no hay que agregarlos uno por uno.
+    tabla** , acéptenlo, así no hay que agregarlos uno por uno.
 3.  Agreguen la columna **Milestone** (no aparece por defecto): botón **+** al final de las
     columnas de la tabla.
 4.  Dejen visibles solo estas columnas y oculten el resto: **Title**, **Assignees**,
     **Status**, **Milestone**.
 5.  Guarden esta vista con el botón **View → Save view**, para que no se pierda si alguien
     la cierra o recarga la página.
-6.  Para cada tarea, asignen un **Responsable** (columna Assignees) — el `0.1` de cada
+6.  Para cada tarea, asignen un **Responsable** (columna Assignees) , el `0.1` de cada
     integrante ya viene autoasignado.
 
 ### 2. Cómo entregar tareas
@@ -67,7 +63,7 @@ selección, bitácoras, justificación ingenieril) se escribe en archivos de tex
     binarios (CAD, esquemáticos, PCB, simulaciones, fotos, video) sí se suben tal cual, en las
     carpetas de `03_Ingenieria_Tecnica` y `04_Multimedia_Prototipo` descritas abajo.
 *   Para insertar una imagen dentro de un `.md` (ej. una foto de avance o un boceto), arrástrala
-    directamente al editor de texto de GitHub — se sube sola y queda enlazada en el archivo.
+    directamente al editor de texto de GitHub , se sube sola y queda enlazada en el archivo.
 
 ### 4. Trabajar juntos en videollamada (sin perder la autoría)
 Si están acostumbrados a abrir un documento de Google Docs/OneDrive en videollamada y
