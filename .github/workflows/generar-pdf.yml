@@ -1,0 +1,62 @@
+name: Generar PDF desde Markdown
+
+# Combina uno o varios archivos .md del repositorio en un solo PDF y lo
+# commitea de vuelta al repo. Se usa para consolidar la evidencia de un
+# hito (ej. los .md de una Fase del 02_DHF) o para armar el borrador del
+# reporte final ABET a partir de varias fases.
+#
+# Uso: pestaña Actions -> "Generar PDF desde Markdown" -> Run workflow.
+on:
+  workflow_dispatch:
+    inputs:
+      archivos:
+        description: 'Rutas de los .md a combinar, en orden, separadas por espacio (ej: "02_DHF_Proceso_Diseno/Fase_1_Investigacion/estado_del_arte.md 02_DHF_Proceso_Diseno/Fase_1_Investigacion/necesidades.md")'
+        required: true
+        type: string
+      salida:
+        description: 'Ruta y nombre del PDF resultante (ej: "01_Gestion_del_Proyecto/Consolidado_Hito1.pdf")'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  generar-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verificar que los archivos existan
+        run: |
+          for f in ${{ inputs.archivos }}; do
+            if [[ ! -f "$f" ]]; then
+              echo "::error::No se encontró el archivo '$f'. Revisa la ruta (debe ser relativa a la raíz del repo)."
+              exit 1
+            fi
+          done
+
+      - name: Instalar Pandoc y motor de PDF
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-xetex fonts-dejavu-core
+
+      - name: Convertir a PDF
+        run: |
+          mkdir -p "$(dirname "${{ inputs.salida }}")"
+          pandoc ${{ inputs.archivos }} \
+            -o "${{ inputs.salida }}" \
+            --pdf-engine=xelatex \
+            --toc \
+            --toc-depth=2 \
+            -V geometry:margin=1in \
+            -V mainfont="DejaVu Serif"
+
+      - name: Commitear el PDF generado
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "${{ inputs.salida }}"
+          git commit -m "Generar PDF: ${{ inputs.salida }}" || echo "Nada que commitear (el PDF no cambió)."
+          git push

@@ -116,6 +116,22 @@ GitHub puede parecer intimidante al principio. No se preocupen, aquí tienen her
 
 ● **[GitHub Skills: Introduction:](https://github.com/skills/introduction-to-github)** Este es un curso oficial de GitHub. Al iniciarlo, un "bot" crea un repositorio real para ti y te va guiando paso a paso (te pide que hagas un cambio, que abras un Issue, etc.) y te corrige automáticamente. ¡Es aprender haciendo\! 
 
+### 7. Consolidar avances en PDF
+Al cierre de un hito (o para armar el borrador del reporte final ABET), pueden combinar
+varios `.md` del repositorio en un solo PDF, sin instalar nada en su computador:
+
+1.  Vayan a la pestaña **Actions** → **"Generar PDF desde Markdown"** → **Run workflow**.
+2.  En **archivos**, escriban las rutas de los `.md` a combinar, en el orden que quieren que
+    aparezcan, separadas por espacio (ej. los de una Fase del `02_DHF` para un hito, o varias
+    fases juntas para el borrador del reporte final).
+3.  En **salida**, escriban la ruta y nombre del PDF resultante (ej.
+    `01_Gestion_del_Proyecto/Consolidado_Hito1.pdf`).
+4.  Denle **Run workflow**. En un par de minutos, el PDF queda commiteado en esa ruta del
+    repositorio — no se pierde, queda como parte del historial del proyecto.
+
+Esto no reemplaza el reporte final (que se arma con la plantilla institucional según el
+checklist ABET), pero les da una base ya ordenada y en un solo documento para partir de ahí.
+
 ---
 
 ## 📂 Estructura del Repositorio (Design History File)
