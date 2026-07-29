@@ -29,17 +29,17 @@ ajuste tu invitación.
 
 ### 1. Configuración Inicial (Semana 1)
 
-1.  Vayan a la pestaña **Projects** de este repositorio y creen un **New Project** con la
-    vista **Table**.
-2.  Al crearlo, GitHub les ofrece **importar los Issues del repositorio directamente a la
-    tabla** , acéptenlo, así no hay que agregarlos uno por uno.
-3.  Agreguen la columna **Milestone** (no aparece por defecto): botón **+** al final de las
+Este repositorio ya viene con el **Project Board** ("Cronograma del Proyecto") creado,
+vinculado, con todos los issues importados y con acceso de escritura para todo el equipo.
+Vayan a la pestaña **Projects** de este repositorio y ábranlo — solo falta darle formato:
+
+1.  Agreguen la columna **Milestone** (no aparece por defecto): botón **+** al final de las
     columnas de la tabla.
-4.  Dejen visibles solo estas columnas y oculten el resto: **Title**, **Assignees**,
+2.  Dejen visibles solo estas columnas y oculten el resto: **Title**, **Assignees**,
     **Status**, **Milestone**.
-5.  Guarden esta vista con el botón **View → Save view**, para que no se pierda si alguien
+3.  Guarden esta vista con el botón **View → Save view**, para que no se pierda si alguien
     la cierra o recarga la página.
-6.  Para cada tarea, asignen un **Responsable** (columna Assignees) , el `0.1` de cada
+4.  Para cada tarea, asignen un **Responsable** (columna Assignees) , el `0.1` de cada
     integrante ya viene autoasignado.
 
 ### 2. Cómo entregar tareas
