@@ -54,6 +54,9 @@ El profesor **NO revisará** carpetas al azar buscando archivos. El profesor rev
         termina revisando el repositorio, no el adjunto del Issue.
         *(¿No conoces esta notación de Markdown ni cómo copiar la ruta/el link de un archivo
         en GitHub? Ver la sección de recursos al final de este documento.)*
+*   **Si el profesor reabre un Issue que ya habían cerrado**, con un comentario suyo y un
+    link al documento: significa que revisó el archivo y dejó observaciones dentro (ver
+    sección 8 más abajo). Sigan el link, corrijan lo señalado, y vuelvan a cerrar el Issue.
 
 ### 3. Formato de la documentación: Markdown, no binarios
 Como la evaluación es individual, la documentación de equipo (informes, actas, matrices de

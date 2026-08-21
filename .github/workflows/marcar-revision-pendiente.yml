@@ -1,0 +1,62 @@
+name: Marcar revisión pendiente
+
+# Uso: cuando revisas un documento enlazado desde un issue ya cerrado y le
+# dejas comentarios <!-- --> con observaciones, corre este workflow para
+# reabrir el issue y notificar al equipo, con el link directo al archivo
+# donde quedaron los comentarios. Uso exclusivo del profesor.
+on:
+  workflow_dispatch:
+    inputs:
+      issue:
+        description: 'Número del issue a reabrir'
+        required: true
+        type: number
+      archivo:
+        description: 'Ruta del archivo con los comentarios (ej: 02_DHF_Proceso_Diseno/Fase_1_Investigacion/Estado del arte.md)'
+        required: true
+        type: string
+      mensaje:
+        description: 'Nota adicional (opcional)'
+        required: false
+        type: string
+
+permissions:
+  issues: write
+
+jobs:
+  marcar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar que quien ejecuta es el profesor
+        if: github.actor != 'oscampo'
+        run: |
+          echo "::error::Este workflow es de uso exclusivo del profesor."
+          exit 1
+
+      - name: Reabrir issue con comentario y enlace al documento
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ARCHIVO: ${{ inputs.archivo }}
+          MENSAJE_EXTRA: ${{ inputs.mensaje }}
+          ISSUE: ${{ inputs.issue }}
+          REPO: ${{ github.repository }}
+        run: |
+          encode_path() {
+            local path="$1" IFS='/'
+            local -a parts encoded
+            read -ra parts <<< "$path"
+            for part in "${parts[@]}"; do
+              encoded+=("$(jq -rn --arg p "$part" '$p|@uri')")
+            done
+            local result
+            result=$(IFS=/; echo "${encoded[*]}")
+            echo "$result"
+          }
+
+          url="https://github.com/$REPO/blob/main/$(encode_path "$ARCHIVO")"
+          body="Revisa los [comentarios]($url) que dejé en el documento."
+          if [[ -n "$MENSAJE_EXTRA" ]]; then
+            body="${body}"$'\n\n'"${MENSAJE_EXTRA}"
+          fi
+
+          gh issue reopen "$ISSUE" --repo "$REPO" --comment "$body"
