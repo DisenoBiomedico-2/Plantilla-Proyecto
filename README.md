@@ -132,6 +132,26 @@ varios `.md` del repositorio en un solo PDF, sin instalar nada en su computador:
 Esto no reemplaza el reporte final (que se arma con la plantilla institucional según el
 checklist ABET), pero les da una base ya ordenada y en un solo documento para partir de ahí.
 
+### 8. Comentarios de revisión del profesor en los `.md`
+Cuando el profesor revise un documento, puede dejar comentarios directamente dentro del
+archivo `.md`, usando la sintaxis estándar de comentarios HTML:
+
+```markdown
+<!-- Revisa: coloca las citas en formato APA aquí -->
+```
+
+Estos comentarios **no se ven** al leer el documento renderizado en GitHub (ni en el PDF
+generado), solo aparecen al editar el archivo en modo texto. Cuando encuentren uno:
+
+1.  **Corrijan primero el contenido** al que se refiere el comentario.
+2.  **Borren el comentario** una vez resuelto, y comiteen el cambio.
+
+No basta con borrar el comentario sin corregir nada: el historial de commits queda como
+evidencia de si hubo una corrección real o no, y el profesor puede revisarlo.
+
+Para encontrar rápido todos los comentarios pendientes en un archivo, busquen `<!--` con
+`Ctrl+F` (o `Cmd+F`) en el editor.
+
 ---
 
 ## 📂 Estructura del Repositorio (Design History File)
