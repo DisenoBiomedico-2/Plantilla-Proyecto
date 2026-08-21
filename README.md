@@ -152,18 +152,6 @@ evidencia de si hubo una corrección real o no, y el profesor puede revisarlo.
 Para encontrar rápido todos los comentarios pendientes en un archivo, busquen `<!--` con
 `Ctrl+F` (o `Cmd+F`) en el editor.
 
-Si un comentario aparece marcado como `CERRADO`, por ejemplo:
-
-```markdown
-<!-- CERRADO: no corrigieron, se calificó con la nota correspondiente -->
-```
-
-significa que el profesor ya evaluó ese punto y no hay más oportunidad de corregirlo — se
-deja el comentario como registro de lo que pasó, pero no requiere ninguna acción de su parte.
-**Este marcador lo agrega únicamente el profesor.** No lo escriban ustedes en un comentario
-que sigue abierto: no oculta el pendiente para el profesor (igual lo revisa manualmente), y
-sí genera una alerta de integridad académica.
-
 ---
 
 ## 📂 Estructura del Repositorio (Design History File)
