@@ -1,0 +1,62 @@
+name: Cerrar revisión definitiva
+
+# Uso: cuando marcas un comentario de revisión como cerrado con el
+# prefijo "c:" (sin más oportunidad de corrección, ya calificado), corre
+# este workflow para dejar el issue cerrado con un mensaje explícito y
+# el link al documento. Uso exclusivo del profesor.
+on:
+  workflow_dispatch:
+    inputs:
+      issue:
+        description: 'Número del issue a cerrar'
+        required: true
+        type: number
+      archivo:
+        description: 'Ruta del archivo con el comentario c: (ej: 02_DHF_Proceso_Diseno/Fase_1_Investigacion/Estado del arte.md)'
+        required: true
+        type: string
+      mensaje:
+        description: 'Nota adicional (opcional)'
+        required: false
+        type: string
+
+permissions:
+  issues: write
+
+jobs:
+  cerrar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar que quien ejecuta es el profesor
+        if: github.actor != 'oscampo'
+        run: |
+          echo "::error::Este workflow es de uso exclusivo del profesor."
+          exit 1
+
+      - name: Cerrar issue con comentario y enlace al documento
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ARCHIVO: ${{ inputs.archivo }}
+          MENSAJE_EXTRA: ${{ inputs.mensaje }}
+          ISSUE: ${{ inputs.issue }}
+          REPO: ${{ github.repository }}
+        run: |
+          encode_path() {
+            local path="$1" IFS='/'
+            local -a parts encoded
+            read -ra parts <<< "$path"
+            for part in "${parts[@]}"; do
+              encoded+=("$(jq -rn --arg p "$part" '$p|@uri')")
+            done
+            local result
+            result=$(IFS=/; echo "${encoded[*]}")
+            echo "$result"
+          }
+
+          url="https://github.com/$REPO/blob/main/$(encode_path "$ARCHIVO")"
+          body="Issue cerrado para [este documento]($url). Sin atención a comentarios/observaciones."
+          if [[ -n "$MENSAJE_EXTRA" ]]; then
+            body="${body}"$'\n\n'"${MENSAJE_EXTRA}"
+          fi
+
+          gh issue close "$ISSUE" --repo "$REPO" --comment "$body"
