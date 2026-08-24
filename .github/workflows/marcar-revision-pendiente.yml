@@ -1,14 +1,19 @@
 name: Marcar revisión pendiente
 
-# Uso: cuando revisas un documento enlazado desde un issue ya cerrado y le
-# dejas comentarios <!-- --> con observaciones, corre este workflow para
-# reabrir el issue y notificar al equipo, con el link directo al archivo
-# donde quedaron los comentarios. Uso exclusivo del profesor.
+# Uso: después de revisar un documento enlazado desde un issue y dejarle
+# comentarios de revisión, corre este workflow con el número de issue y
+# la ruta del archivo. Lee el archivo y decide solo qué hacer:
+#   - Si tiene comentarios <!-- --> sin el prefijo "c:" (observaciones
+#     abiertas): reabre el issue y comenta con el link al documento.
+#   - Si todos sus comentarios <!-- --> tienen el prefijo "c:" (ya
+#     calificado, sin más oportunidad): cierra el issue con un comentario
+#     explícito y el link al documento.
+# Uso exclusivo del profesor.
 on:
   workflow_dispatch:
     inputs:
       issue:
-        description: 'Número del issue a reabrir'
+        description: 'Número del issue a actualizar'
         required: true
         type: number
       archivo:
@@ -21,6 +26,7 @@ on:
         type: string
 
 permissions:
+  contents: read
   issues: write
 
 jobs:
@@ -33,7 +39,10 @@ jobs:
           echo "::error::Este workflow es de uso exclusivo del profesor."
           exit 1
 
-      - name: Reabrir issue con comentario y enlace al documento
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Leer el archivo y actualizar el issue
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ARCHIVO: ${{ inputs.archivo }}
@@ -41,6 +50,11 @@ jobs:
           ISSUE: ${{ inputs.issue }}
           REPO: ${{ github.repository }}
         run: |
+          if [[ ! -f "$ARCHIVO" ]]; then
+            echo "::error::No se encontró el archivo '$ARCHIVO' en el repositorio."
+            exit 1
+          fi
+
           encode_path() {
             local path="$1" IFS='/'
             local -a parts encoded
@@ -54,9 +68,29 @@ jobs:
           }
 
           url="https://github.com/$REPO/blob/main/$(encode_path "$ARCHIVO")"
-          body="Revisa los [comentarios]($url) que dejé en el documento."
-          if [[ -n "$MENSAJE_EXTRA" ]]; then
-            body="${body}"$'\n\n'"${MENSAJE_EXTRA}"
+
+          todas_lineas="$(grep -n '<!--' "$ARCHIVO" || true)"
+          if [[ -z "$todas_lineas" ]]; then
+            echo "::error::'$ARCHIVO' no tiene comentarios <!-- -->, nada que reportar."
+            exit 1
           fi
 
-          gh issue reopen "$ISSUE" --repo "$REPO" --comment "$body"
+          # Comentarios que NO empiezan con "c:" justo después de <!-- --
+          # esos son observaciones abiertas, todavía pendientes de corregir.
+          pendientes="$(echo "$todas_lineas" | grep -vPi '<!--\s*c:' || true)"
+
+          if [[ -n "$pendientes" ]]; then
+            body="Revisa los [comentarios]($url) que dejé en el documento."
+            if [[ -n "$MENSAJE_EXTRA" ]]; then
+              body="${body}"$'\n\n'"${MENSAJE_EXTRA}"
+            fi
+            gh issue reopen "$ISSUE" --repo "$REPO" --comment "$body"
+            echo "Acción: issue reabierto (había comentarios pendientes)."
+          else
+            body="Issue cerrado para [este documento]($url). Sin atención a comentarios/observaciones."
+            if [[ -n "$MENSAJE_EXTRA" ]]; then
+              body="${body}"$'\n\n'"${MENSAJE_EXTRA}"
+            fi
+            gh issue close "$ISSUE" --repo "$REPO" --comment "$body"
+            echo "Acción: issue cerrado (todos los comentarios estaban marcados c:)."
+          fi
