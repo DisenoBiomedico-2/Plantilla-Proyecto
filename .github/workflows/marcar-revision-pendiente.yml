@@ -80,14 +80,15 @@ jobs:
           pendientes="$(echo "$todas_lineas" | grep -vPi '<!--\s*c:' || true)"
 
           if [[ -n "$pendientes" ]]; then
-            body="Revisa los [comentarios]($url) que dejé en el documento."
+            n_pendientes="$(echo "$pendientes" | wc -l | tr -d ' ')"
+            body="Acción: issue reabierto (hay ${n_pendientes} comentarios pendientes). Recuerden borrar el texto entre \`<!-- ... -->\` cuando hagan las correcciones. Luego de hacer las correcciones, agreguen un comentario (por ejemplo, \"correcciones hechas\") aquí en el issue y ciérrenlo."
             if [[ -n "$MENSAJE_EXTRA" ]]; then
               body="${body}"$'\n\n'"${MENSAJE_EXTRA}"
             fi
             gh issue reopen "$ISSUE" --repo "$REPO" --comment "$body"
-            echo "Acción: issue reabierto (había comentarios pendientes)."
+            echo "Acción: issue reabierto (${n_pendientes} comentarios pendientes)."
           else
-            body="Issue cerrado para [este documento]($url). Sin atención a comentarios/observaciones."
+            body="Issue cerrado para [este documento]($url). No se atendieron los comentarios/observaciones dentro del plazo dado."
             if [[ -n "$MENSAJE_EXTRA" ]]; then
               body="${body}"$'\n\n'"${MENSAJE_EXTRA}"
             fi
