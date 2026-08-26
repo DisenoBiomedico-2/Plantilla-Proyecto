@@ -54,9 +54,10 @@ El profesor **NO revisará** carpetas al azar buscando archivos. El profesor rev
         termina revisando el repositorio, no el adjunto del Issue.
         *(¿No conoces esta notación de Markdown ni cómo copiar la ruta/el link de un archivo
         en GitHub? Ver la sección de recursos al final de este documento.)*
-*   **Si el profesor reabre un Issue que ya habían cerrado**, con un comentario suyo y un
-    link al documento: significa que revisó el archivo y dejó observaciones dentro (ver
-    sección 8 más abajo). Sigan el link, corrijan lo señalado, y vuelvan a cerrar el Issue.
+*   **Si el profesor reabre un Issue que ya habían cerrado**: significa que revisó el
+    documento y encontró algo que corregir (ver sección 8 más abajo). Sigan los links que
+    dejó en sus comentarios del Issue, corrijan lo señalado, agreguen un comentario avisando
+    (ej. "correcciones hechas"), y vuelvan a cerrar el Issue.
 
 ### 3. Formato de la documentación: Markdown, no binarios
 Como la evaluación es individual, la documentación de equipo (informes, actas, matrices de
@@ -135,25 +136,23 @@ varios `.md` del repositorio en un solo PDF, sin instalar nada en su computador:
 Esto no reemplaza el reporte final (que se arma con la plantilla institucional según el
 checklist ABET), pero les da una base ya ordenada y en un solo documento para partir de ahí.
 
-### 8. Comentarios de revisión del profesor en los `.md`
-Cuando el profesor revise un documento, puede dejar comentarios directamente dentro del
-archivo `.md`, usando la sintaxis estándar de comentarios HTML:
+### 8. Comentarios de revisión del profesor
+Cuando el profesor revise un documento, deja sus observaciones como **comentarios directamente
+en el Issue** (no dentro del archivo `.md`), cada uno con un link a la línea o líneas exactas
+del documento a las que se refiere, ej.:
 
-```markdown
-<!-- Revisa: coloca las citas en formato APA aquí -->
-```
+> `[1](https://github.com/.../blob/<commit>/archivo.md#L23-L25) Aquí deben colocar la cita que
+> respalda esta afirmación`
 
-Estos comentarios **no se ven** al leer el documento renderizado en GitHub (ni en el PDF
-generado), solo aparecen al editar el archivo en modo texto. Cuando encuentren uno:
+Si el Issue aparece **reabierto**, léanlo de arriba hacia abajo: cada comentario del profesor
+trae su propio link. Sigan cada uno, corrijan lo señalado en esa parte del documento, y
+comiteen. Cuando terminen con todos, agreguen un comentario en el Issue (ej. "correcciones
+hechas") y vuelvan a cerrarlo.
 
-1.  **Corrijan primero el contenido** al que se refiere el comentario.
-2.  **Borren el comentario** una vez resuelto, y comiteen el cambio.
-
-No basta con borrar el comentario sin corregir nada: el historial de commits queda como
-evidencia de si hubo una corrección real o no, y el profesor puede revisarlo.
-
-Para encontrar rápido todos los comentarios pendientes en un archivo, busquen `<!--` con
-`Ctrl+F` (o `Cmd+F`) en el editor.
+**Nota sobre esos links:** apuntan a una versión específica del archivo congelada en el momento
+en que el profesor comentó (por eso el link no cambia aunque ustedes ya hayan corregido) — es
+normal que al abrirlo veas el texto *anterior* a tu corrección, no el actual. Sirve como
+referencia de qué decía el documento cuando se hizo la observación.
 
 ---
 

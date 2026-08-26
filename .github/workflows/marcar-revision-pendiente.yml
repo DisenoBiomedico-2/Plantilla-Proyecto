@@ -1,13 +1,14 @@
 name: Marcar revisión pendiente
 
-# Uso: después de revisar un documento enlazado desde un issue y dejarle
-# comentarios de revisión, corre este workflow con el número de issue y
-# la ruta del archivo. Lee el archivo y decide solo qué hacer:
-#   - Si tiene comentarios <!-- --> sin el prefijo "c:" (observaciones
-#     abiertas): reabre el issue y comenta con el link al documento.
-#   - Si todos sus comentarios <!-- --> tienen el prefijo "c:" (ya
-#     calificado, sin más oportunidad): cierra el issue con un comentario
-#     explícito y el link al documento.
+# Uso: después de dejar comentarios de revisión en el Issue (con permalinks
+# a las líneas del documento que comentaste -- vista "code" del archivo,
+# seleccionar línea(s), "..." -> Copy permalink), corre este workflow para
+# reabrir o cerrar el issue, con un mensaje de cierre de ronda.
+#
+#   - Reabrir: hay observaciones que el equipo debe corregir.
+#   - Cerrar: no se atendieron las observaciones dentro del plazo dado
+#     (ya calificado, sin más oportunidad).
+#
 # Uso exclusivo del profesor.
 on:
   workflow_dispatch:
@@ -16,17 +17,19 @@ on:
         description: 'Número del issue a actualizar'
         required: true
         type: number
-      archivo:
-        description: 'Ruta del archivo con los comentarios (ej: 02_DHF_Proceso_Diseno/Fase_1_Investigacion/Estado del arte.md)'
+      accion:
+        description: 'Qué hacer con el issue'
         required: true
-        type: string
+        type: choice
+        options:
+          - reabrir
+          - cerrar
       mensaje:
-        description: 'Nota adicional (opcional)'
+        description: 'Mensaje (opcional, hay uno por defecto según la acción)'
         required: false
         type: string
 
 permissions:
-  contents: read
   issues: write
 
 jobs:
@@ -39,59 +42,20 @@ jobs:
           echo "::error::Este workflow es de uso exclusivo del profesor."
           exit 1
 
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Leer el archivo y actualizar el issue
+      - name: Reabrir o cerrar el issue
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ARCHIVO: ${{ inputs.archivo }}
+          ACCION: ${{ inputs.accion }}
           MENSAJE_EXTRA: ${{ inputs.mensaje }}
           ISSUE: ${{ inputs.issue }}
           REPO: ${{ github.repository }}
         run: |
-          if [[ ! -f "$ARCHIVO" ]]; then
-            echo "::error::No se encontró el archivo '$ARCHIVO' en el repositorio."
-            exit 1
-          fi
-
-          encode_path() {
-            local path="$1" IFS='/'
-            local -a parts encoded
-            read -ra parts <<< "$path"
-            for part in "${parts[@]}"; do
-              encoded+=("$(jq -rn --arg p "$part" '$p|@uri')")
-            done
-            local result
-            result=$(IFS=/; echo "${encoded[*]}")
-            echo "$result"
-          }
-
-          url="https://github.com/$REPO/blob/main/$(encode_path "$ARCHIVO")"
-
-          todas_lineas="$(grep -n '<!--' "$ARCHIVO" || true)"
-          if [[ -z "$todas_lineas" ]]; then
-            echo "::error::'$ARCHIVO' no tiene comentarios <!-- -->, nada que reportar."
-            exit 1
-          fi
-
-          # Comentarios que NO empiezan con "c:" justo después de <!-- --
-          # esos son observaciones abiertas, todavía pendientes de corregir.
-          pendientes="$(echo "$todas_lineas" | grep -vPi '<!--\s*c:' || true)"
-
-          if [[ -n "$pendientes" ]]; then
-            n_pendientes="$(echo "$pendientes" | wc -l | tr -d ' ')"
-            body="Acción: issue reabierto (hay ${n_pendientes} comentarios pendientes). Recuerden borrar el texto entre \`<!-- ... -->\` cuando hagan las correcciones. Luego de hacer las correcciones, agreguen un comentario (por ejemplo, \"correcciones hechas\") aquí en el issue y ciérrenlo."
-            if [[ -n "$MENSAJE_EXTRA" ]]; then
-              body="${body}"$'\n\n'"${MENSAJE_EXTRA}"
-            fi
+          if [[ "$ACCION" == "reabrir" ]]; then
+            body="${MENSAJE_EXTRA:-Revisen mis observaciones en los comentarios de este issue (con links a las líneas del documento) y corrijan lo señalado. Cuando terminen, agreguen un comentario aquí y cierren el issue.}"
             gh issue reopen "$ISSUE" --repo "$REPO" --comment "$body"
-            echo "Acción: issue reabierto (${n_pendientes} comentarios pendientes)."
+            echo "Acción: issue reabierto."
           else
-            body="Issue cerrado para [este documento]($url). No se atendieron los comentarios/observaciones dentro del plazo dado."
-            if [[ -n "$MENSAJE_EXTRA" ]]; then
-              body="${body}"$'\n\n'"${MENSAJE_EXTRA}"
-            fi
+            body="${MENSAJE_EXTRA:-Issue cerrado. No se atendieron las observaciones dentro del plazo dado.}"
             gh issue close "$ISSUE" --repo "$REPO" --comment "$body"
-            echo "Acción: issue cerrado (todos los comentarios estaban marcados c:)."
+            echo "Acción: issue cerrado."
           fi
